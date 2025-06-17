@@ -1,11 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 
-public class move2 : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    public Vector2 move;
-    public float speed = 3f, x = 0, y = 0;
-    
+    public float speed = 3f;
+    public Rigidbody2D rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,7 +15,7 @@ public class move2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        x = 0;y = 0;
+        float x = 0, y = 0;
         if (Input.GetKey(KeyCode.W))
         {
             y = 1;
@@ -33,9 +32,10 @@ public class move2 : MonoBehaviour
         {
             x = 1;
         }
-        move = new Vector2(x, y);
+        Vector2 move = new Vector2(x, y);
         move.Normalize();
-        transform.Translate(move * Time.deltaTime * speed);
-        
+        //transform.Translate(move * Time.deltaTime * speed);
+        //transform.Translate, rb.MovePosition은 벽 충돌 무시
+        rb.linearVelocity = move * speed;
     }
 }

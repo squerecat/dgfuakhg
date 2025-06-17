@@ -22,7 +22,7 @@ public class reload : MonoBehaviour
         if (shoot >= 15)
         {
             shoot = 15;
-            player.GetComponent<stabwhehehe>().trigger = 1;
+            player.GetComponent<PlayerWeapons>().trigger = 1;
 
         }
 
